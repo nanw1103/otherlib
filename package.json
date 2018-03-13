@@ -1,0 +1,19 @@
+{
+  "name": "otherlib",
+  "version": "1.0.0",
+  "description": "Yet another utility lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nanw1103/otherlib.git"
+  },
+  "author": "nanw1103",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nanw1103/otherlib/issues"
+  },
+  "homepage": "https://github.com/nanw1103/otherlib#readme"
+}
