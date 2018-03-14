@@ -124,7 +124,8 @@ const _dedup = (function() {
 })()
 
 /**
- * Avoid concurrent duplicated invocation of the same task function.
+ * Deduplicate concurrent generation of the same promise task. If there's an ongoing pending promise, 
+ * succeeding calls to the same promise-generator function resolves/rejects along with the pending promise.
  * 
  * @param    {function}	func - Task function to be invoked.
  *				
