@@ -1,7 +1,7 @@
 # otherlib
 Yet another javascript utility library
 
-[API Doc] (docs/index.html)
+[API Doc](docs/index.html)
 
 * dedup
 * delay
