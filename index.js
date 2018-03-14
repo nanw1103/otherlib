@@ -41,6 +41,15 @@ function delay(millis, obj) {
  * @return {Promise}
  */
 async function retry(func, options) {
+	if (!options.timeoutMs && !options.retry)
+		throw 'Invalid argument: either options.timeoutMs or options.retry must be specified'
+	if (options.timeoutMs < 0)
+		throw 'Invalid argument: options.timeoutMs < 0'
+	if (options.retry < 0)
+		throw 'Invalid argument: options.retry < 0'
+	if (options.intervalMs < 0)
+		throw 'Invalid argument: options.intervalMs < 0'
+
 	let start = Date.now()
 	for (let n = 0;;) {
 		try {
@@ -51,12 +60,23 @@ async function retry(func, options) {
 					options.log && options.log(`RetryTask [${options.name}] - Error=${e}. FAILED: Retry limit reached.`)
 					throw e
 				}
-				if (options.timeoutMs && Date.now() - start > options.timeoutMs) {
+				let now = Date.now()
+				if (options.timeoutMs && now - start > options.timeoutMs) {
 					options.log && options.log(`RetryTask [${options.name}] - Error=${e}. FAILED: Retry Timeout.`)
 					throw e
 				}
 
-				options.log && options.log(`RetryTask [${options.name}] - Error=${e}. Retry=${n}/${options.retry}...`)
+				let msg = ''
+				if (options.retry) {
+					msg = `${n}/${options.retry}`
+				}				
+				if (options.timeoutMs) {
+					let percent = ((now - start) / options.timeoutMs * 100) | 0
+					if (options.retry)
+						msg += ', '
+					msg += `timeout ${percent}%`
+				}
+				options.log && options.log(`RetryTask [${options.name}] - Error=${e}. Retry=${msg}...`)
 				await delay(options.intervalMs)
 				continue
 			}
