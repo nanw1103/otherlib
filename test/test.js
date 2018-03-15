@@ -3,7 +3,7 @@ const {
 	delay,
 	retry,
 	dedup
-} = require('./index.js')
+} = require('../lib/index.js')
 
 process.on('uncaughtException', err => {
 	console.error('uncaughtException', err)

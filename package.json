@@ -1,8 +1,8 @@
 {
   "name": "otherlib",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Yet another utility lib",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha"
   },
