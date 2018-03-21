@@ -1,6 +1,6 @@
 {
   "name": "otherlib",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Yet another utility lib",
   "main": "lib/index.js",
   "scripts": {
