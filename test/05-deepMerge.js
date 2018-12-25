@@ -94,7 +94,28 @@ describe('deepMerge', function() {
 		
 	})
 	it('with array', function() {
-		
+		//TODO
+	})
+	
+	it('Accept undefined object', function() {
+		let target = {
+			a: 1,
+			b: 22
+		}
+		let src1 = {
+			a: 2,
+			c: 33
+		}
+		let src2 = {
+			a: 11
+		}
+		let expected = {
+			a: 11,
+			b: 22,
+			c: 33
+		}
+		let ret = deepMerge(target, undefined, src1, undefined, src2, undefined)
+		assert(JSON.stringify(expected) === JSON.stringify(ret))
 	})
 
 })
