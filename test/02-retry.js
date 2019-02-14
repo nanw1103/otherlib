@@ -1,13 +1,6 @@
 const assert = require('assert')
 const { retry } = require('../lib/index.js')
-
-process.on('uncaughtException', err => {
-	console.error('uncaughtException', err)
-	process.exit()
-}).on('unhandledRejection', (reason, p) => {
-	console.log('Unhandled Rejection at: Promise', p, 'reason:', reason)
-	process.exit()
-})
+require('./helper.js')
 
 describe('retry (new api)', function() {
 	it('Happy path, no retry', function() {

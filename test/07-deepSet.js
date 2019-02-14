@@ -1,13 +1,6 @@
 const assert = require('assert')
 const { deepEqual, deepSet, deepGet } = require('../lib/index.js')
-
-process.on('uncaughtException', err => {
-	console.error('uncaughtException', err)
-	process.exit()
-}).on('unhandledRejection', (reason, p) => {
-	console.log('Unhandled Rejection at: Promise', p, 'reason:', reason)
-	process.exit()
-})
+require('./helper.js')
 
 
 describe('deepSet', function() {
@@ -47,5 +40,13 @@ describe('deepSet', function() {
 		assert(3 === t.x.y.zz)
 		deepSet(o, 'aa.bb.cc', 4)
 		assert(4 === o.aa.bb.cc)
+	})
+	it('Auto convert null to empty obj', function() {
+		let o = {
+			x: null
+		}
+		
+		deepSet(o, 'x.a', 2)
+		assert(2 === o.x.a)
 	})
 })

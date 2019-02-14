@@ -1,14 +1,6 @@
 const assert = require('assert')
 const { deepEqual, deepGet } = require('../lib/index.js')
-
-process.on('uncaughtException', err => {
-	console.error('uncaughtException', err)
-	process.exit()
-}).on('unhandledRejection', (reason, p) => {
-	console.log('Unhandled Rejection at: Promise', p, 'reason:', reason)
-	process.exit()
-})
-
+require('./helper.js')
 
 describe('deepGet', function() {
 	it('basic', function() {
@@ -29,21 +21,49 @@ describe('deepGet', function() {
 		assert(t === deepGet(o, 'a.b'))
 	})
 	
-	it('defaultVal', function() {
-		let t = {
-			x: {
-				y: {
-					z: 1
-				}
-			}
-		}
+	it('types', function() {
 		let o = {
 			a: {
-				b: t
+				n: 1,
+				b: true,
+				s: 'asdf',
+				e: null,
+				v: [11, 'asdf', true, null, undefined],
+				u: undefined,
 			}
 		}
 		
-		assert(1 === deepGet(o, 'a.b.x.y.z', 33))
-		assert(33 === deepGet(o, 'a.b.x.y.inexist', 33))
+		assert(1 === deepGet(o, 'a.n'))
+		assert(true === deepGet(o, 'a.b'))
+		assert('asdf' === deepGet(o, 'a.s'))
+		assert(null === deepGet(o, 'a.e'))
+		assert(Array.isArray(deepGet(o, 'a.v')))
+		assert(11 === deepGet(o, 'a.v.0'))
+		assert(undefined === deepGet(o, 'a.u'))
 	})
+	
+	
+	it('defaultValue', function() {
+		let o = {
+			a: {
+				n: 1,
+				b: true,
+				s: 'asdf',
+				e: null,
+				v: [11, 'asdf', true, null, undefined],
+				u: undefined,
+			}
+		}
+		
+		assert(undefined === deepGet(o, 'a.inexist'))
+		assert(33 === deepGet(o, 'a.inexist', 33))
+		assert(33 === deepGet(o, 'a.n.inexist', 33))
+		assert(33 === deepGet(o, 'a.b.inexist', 33))
+		assert(33 === deepGet(o, 'a.s.inexist', 33))
+		assert(33 === deepGet(o, 'a.e.inexist', 33))
+		assert(33 === deepGet(o, 'a.v.inexist', 33))
+		assert(33 === deepGet(o, 'a.v.0.inexist', 33))
+		assert(33 === deepGet(o, 'a.u.inexist', 33))
+	})
+	
 })

@@ -1,13 +1,6 @@
 const assert = require('assert')
 const { delay } = require('../lib/index.js')
-
-process.on('uncaughtException', err => {
-	console.error('uncaughtException', err)
-	process.exit()
-}).on('unhandledRejection', (reason, p) => {
-	console.log('Unhandled Rejection at: Promise', p, 'reason:', reason)
-	process.exit()
-})
+require('./helper.js')
 
 describe('delay', function() {
 	it('Delay value', function() {
