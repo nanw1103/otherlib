@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { retry } = require('../lib/index.js')
+const { retry } = require('../index.js')
 require('./helper.js')
 
 describe('retry (new api)', function() {

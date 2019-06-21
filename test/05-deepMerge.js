@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { deepEqual, deepMerge } = require('../lib/index.js')
+const { deepEqual, deepMerge } = require('../index.js')
 require('./helper.js')
 
 

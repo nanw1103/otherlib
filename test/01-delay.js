@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { delay } = require('../lib/index.js')
+const { delay } = require('../index.js')
 require('./helper.js')
 
 describe('delay', function() {

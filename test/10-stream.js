@@ -3,7 +3,7 @@ const {
 	bufferToStream,
 	streamToBuffer,
 	stringToStream
-} = require('../lib/stream')
+} = require('../stream')
 
 describe('stream', function() {
 	it('basic', async function() {
