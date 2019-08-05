@@ -1,6 +1,8 @@
 # otherlib
 Yet another javascript utility library
 
+[![npm version](http://img.shields.io/npm/v/otherlib.svg?style=flat)](https://npmjs.org/package/otherlib "View this project on npm")
+
 [API Doc](docs/index.html)
 
 * dedup
