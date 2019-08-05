@@ -4,7 +4,7 @@ require('./helper.js')
 
 describe('delay', function() {
 	it('Delay value', function() {
-		return delay(10, 'delayed promise completed')		
+		return delay(10, 'delayed promise completed')
 	})
 
 	it('Delay undefined', function() {

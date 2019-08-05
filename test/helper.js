@@ -1,4 +1,3 @@
-
 process.on('uncaughtException', err => {
 	console.error('uncaughtException', err)
 	process.exit(11)

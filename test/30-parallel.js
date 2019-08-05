@@ -8,20 +8,20 @@ describe('parallel', function() {
 })
 
 async function ut() {
-    let sum = 0
-    let start = Date.now()
-    let tasks = [...Array(10).keys()]
-    let expectedResult = tasks.reduce((a,b)=>a+b)
-    await parallel.run(tasks, delayProcess)
+	let sum = 0
+	let start = Date.now()
+	let tasks = [...Array(10).keys()]
+	let expectedResult = tasks.reduce((a,b)=>a+b)
+	await parallel.run(tasks, delayProcess)
 
-    let cost = Date.now() - start
-    if (sum !== expectedResult)
-        throw 'UT failed: invalid sum'
-    if (cost > 200)
-        throw 'UT failed: invalid time cost'
+	let cost = Date.now() - start
+	if (sum !== expectedResult)
+		throw 'UT failed: invalid sum'
+	if (cost > 200)
+		throw 'UT failed: invalid time cost'
 
-    async function delayProcess(n, w) {
-        sum += n
-        await delay(100)
-    }
+	async function delayProcess(n, w) {
+		sum += n
+		await delay(100)
+	}
 }

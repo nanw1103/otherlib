@@ -78,7 +78,7 @@ async function retry(func, options) {
 			let msg = `RetryTask [${name}] - State=${state}. FAILED: Retry limit reached.`
 			log(msg)
 			if (state instanceof Error) {
-				state.message = state.message + ` (RetryTask [${name}] - FAILED: Retry limit reached.)`
+				state.message += ` (RetryTask [${name}] - FAILED: Retry limit reached.)`
 				throw state
 			}
 			throw new Error(msg)
@@ -88,7 +88,7 @@ async function retry(func, options) {
 			let msg = `RetryTask [${name}] - State=${state}. FAILED: Retry Timeout.`
 			log(msg)
 			if (state instanceof Error) {
-				state.message = state.message + ` (RetryTask [${name}] - FAILED: Retry Timeout.)`
+				state.message += ` (RetryTask [${name}] - FAILED: Retry Timeout.)`
 				throw state
 			}
 			throw new Error(msg)
@@ -226,13 +226,13 @@ function deepEqual(a, b) {
 		return false
 	if (aIsBuffer)
 		return a.equals(b)
-		
+
 	//object, array
 	if (Array.isArray(a) !== Array.isArray(b))
 		return false
 
 	let keys = Object.keys(a)
-	if (keys.length != Object.keys(b).length)
+	if (keys.length !== Object.keys(b).length)
 		return false
 	for (let k of keys) {
 		if (!deepEqual(a[k], b[k]))
@@ -348,8 +348,8 @@ function deepGet(obj, deepKey, defaultVal) {
 function deepSet(obj, deepKey, v) {
 	if (typeof obj !== 'object')
 		throw new Error(`deepSet failure. Not an object. type=${typeof obj}, key=${deepKey}`)
-	
-	if (typeof obj === null)
+
+	if (obj === null)
 		throw new Error(`deepSet failure. Setting into null object. key=${deepKey}`)
 
 	let parts = deepKey.split('.')

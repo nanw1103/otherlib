@@ -6,11 +6,11 @@ require('./helper.js')
 describe('deepSet', function() {
 	it('basic 1', function() {
 		let t = {}
-		
+
 		deepSet(t, 'a', 1)
-		assert(1 === t.a)
+		assert(t.a === 1)
 		deepSet(t, 'aa.bb', 2)
-		assert(2 === t.aa.bb)
+		assert(t.aa.bb === 2)
 	})
 	it('Exception when setting to existing non-obj', function() {
 		let t = {a:1}
@@ -33,20 +33,20 @@ describe('deepSet', function() {
 				b: t
 			}
 		}
-		
+
 		deepSet(o, 'a.b.x.y.z', 2)
-		assert(2 === t.x.y.z)
+		assert(t.x.y.z === 2)
 		deepSet(o, 'a.b.x.y.zz', 3)
-		assert(3 === t.x.y.zz)
+		assert(t.x.y.zz === 3)
 		deepSet(o, 'aa.bb.cc', 4)
-		assert(4 === o.aa.bb.cc)
+		assert(o.aa.bb.cc === 4)
 	})
 	it('Auto convert null to empty obj', function() {
 		let o = {
 			x: null
 		}
-		
+
 		deepSet(o, 'x.a', 2)
-		assert(2 === o.x.a)
+		assert(o.x.a === 2)
 	})
 })

@@ -38,17 +38,19 @@ module.exports = {
 	stringToStream,
 	streamToString
 }
-
+/*
 class MemStream extends Readable {
 	constructor(src) {
+		super()
 		if (typeof src === 'string') {
 		} else if (src instanceof Buffer) {
 		}
 	}
-	
+
 	toBuffer() {
 	}
-	
+
 	toString() {
 	}
 }
+*/

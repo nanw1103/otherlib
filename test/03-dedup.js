@@ -12,7 +12,7 @@ describe('dedup', function() {
 				if (busy)
 					throw 'Duplicated concurrent call!'
 				busy = true
-			
+
 				setTimeout(() => {
 					//console.log('Working...')
 					busy = false
@@ -29,6 +29,6 @@ describe('dedup', function() {
 			test(),
 			test(),
 			delay(200, test)
-		]).then(() => assert(n == 2)).then(()=>{})
+		]).then(() => assert(n === 2)).then(()=>{})
 	})
 })

@@ -29,14 +29,14 @@ describe('deepMerge', function() {
 	})
 
 	it('types', function() {
-		
+
 		let f1 = ()=>{}
 		let f2 = ()=>{}
-		
+
 		let target = {
 			a: 1,
 			b: {
-				a: 2				
+				a: 2
 			}
 		}
 		let src1 = {
@@ -84,12 +84,12 @@ describe('deepMerge', function() {
 		}
 		let ret = deepMerge(target, src1, src2)
 		assert(deepEqual(expected, ret))
-		
+
 	})
 	it('with array', function() {
 		//TODO
 	})
-	
+
 	it('Accept undefined object', function() {
 		let target = {
 			a: 1,

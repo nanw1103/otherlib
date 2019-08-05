@@ -15,7 +15,7 @@ describe('deepEqual', function() {
 			b: {
 				a: 2
 			}
-		}		
+		}
 		assert(deepEqual(obj1, obj2))
 	})
 
@@ -41,12 +41,12 @@ describe('deepEqual', function() {
 		assert(!deepEqual(obj1, obj2))
 		assert(!deepEqual(obj1, obj3))
 	})
-	
+
 	it('types', function() {
-		
+
 		let f1 = ()=>{}
 		let f2 = ()=>{}
-		
+
 		let t1 = {
 			a: 2,
 			b: true,
@@ -62,7 +62,7 @@ describe('deepEqual', function() {
 			l: [],
 			m: [11,22]
 		}
-		
+
 		let obj1 = {
 			a: 1,
 			b: t1,
@@ -81,4 +81,3 @@ describe('deepEqual', function() {
 		assert(!deepEqual(obj1, obj3))
 	})
 })
-
