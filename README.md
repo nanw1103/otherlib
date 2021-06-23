@@ -8,6 +8,7 @@ Yet another javascript utility library
 * dedup
 * delay
 * retry
+* throttle
 
 **dedup**
 
@@ -85,3 +86,32 @@ Retry the specific task conditionally
 })().then(console.log).catch(console.error)
 ```
 
+**throttle**
+
+Wrap an async function with throttle control, to control the speed of execution.
+
+```javascript
+const throttle = require('otherlib/throttle')
+
+let task(n) {
+	return new Promise(resolve => {
+		console.log('start', n)
+		setTimeout(() => {
+			console.log('done', n)
+			resolve()
+		}, 1000)
+	})
+}
+
+let options = {
+	concurrency: 10,	// Max allowed concurrent calls of the target function
+}
+let throttledTask = throttle(task, options)
+
+let tasks = []
+for (let i = 0; i < 30; i++)
+	tasks.push(throttledTask(i))
+
+Promise.all(tasks)
+	.then(() => console.log('complete'))
+```
