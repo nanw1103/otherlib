@@ -1,6 +1,6 @@
 {
   "name": "otherlib",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Yet another utility lib",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/nanw1103/otherlib#readme",
   "dependencies": {
+  },
+  "devDependencies": {
     "mocha": "^9.0.2"
   }
 }
