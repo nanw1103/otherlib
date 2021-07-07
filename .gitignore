@@ -58,3 +58,6 @@ typings/
 .env
 
 t.js
+
+.vscode
+.DS_Store

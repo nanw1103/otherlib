@@ -115,3 +115,17 @@ for (let i = 0; i < 30; i++)
 Promise.all(tasks)
 	.then(() => console.log('complete'))
 ```
+
+**file-cache**
+
+A file based map object for caching, e.g. local auth session for CLI.
+
+```
+const FileCache = require('otherlib/file-cache.js')
+const cache = FileCache('my-file.json')
+cache.put('k1', 'v1')
+cache.get('k1) === 'v1'	//true
+cache.keys()	//['k1']
+cache.remove('k1')
+cache.clear()
+```

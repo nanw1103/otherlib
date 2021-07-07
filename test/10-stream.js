@@ -13,8 +13,9 @@ describe('stream', function() {
 
 		let buffer2 = await streamToBuffer(stream)
 		let stream2 = bufferToStream(buffer2)
+		let buffer3 = await streamToBuffer(stream2)
 
-		assert(Buffer.compare(buffer1, buffer2) === 0)
+		assert(Buffer.compare(buffer1, buffer3) === 0)
 	})
 
 	it('streamToBuffer', function() {

@@ -56,14 +56,14 @@ async function retry(func, options) {
 			options.intervalMs = 10000
 	}
 
-	let filter = options.filter || ((err, ret, _hasError) => _hasError)
+	let filter = options.filter || ((err1, ret1, _hasError1) => _hasError1)
 
 	//start of backward compatibility
 	if (options.filterReject || options.filterResolve) {
-		filter = (err, ret, _hasError) => {
-			if (_hasError)
-				return options.filterReject && options.filterReject(err)
-			return options.filterResolve && options.filterResolve(ret)
+		filter = (err1, ret1, _hasError1) => {
+			if (_hasError1)
+				return options.filterReject && options.filterReject(err1)
+			return options.filterResolve && options.filterResolve(ret1)
 		}
 	}
 	//end of backward compatibility
@@ -94,17 +94,17 @@ async function retry(func, options) {
 			throw new Error(msg)
 		}
 
-		let msg = ''
+		let message = ''
 		if (options.retry) {
-			msg = `${n}/${options.retry}`
+			message = `${n}/${options.retry}`
 		}
 		if (options.timeoutMs) {
 			let percent = (now - start) / options.timeoutMs * 100 | 0
 			if (options.retry)
-				msg += ', '
-			msg += `timeout ${percent}%`
+				message += ', '
+			message += `timeout ${percent}%`
 		}
-		log(`RetryTask [${name}] - State=${state}. Retry=${msg}...`)
+		log(`RetryTask [${name}] - State=${state}. Retry=${message}...`)
 		await delay(options.intervalMs)
 	}
 

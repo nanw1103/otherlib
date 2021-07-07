@@ -21,14 +21,14 @@ describe('dedup', function() {
 			})
 		}
 
-		let test = () => dedup(task)
+		let fn = () => dedup(task)
 		//.then (d => console.log('Finish:', d))
 		//.catch(e => console.log('Error:', e))
 
 		return Promise.all([
-			test(),
-			test(),
-			delay(200, test)
+			fn(),
+			fn(),
+			delay(200, fn)
 		]).then(() => assert(n === 2)).then(()=>{})
 	})
 })

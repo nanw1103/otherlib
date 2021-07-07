@@ -17,7 +17,7 @@ describe('retry (new api)', function() {
 			timeoutMs: 0,		//total timeout limit. 0 indicates no total timeout
 			//log: console.log,	//optionally, log the details
 			//name: 'test',		//name shown in log
-		}).then(ret => assert(n === 1))
+		}).then(() => assert(n === 1))
 	})
 
 	it('Retry twice, based on error condition', function() {
@@ -67,7 +67,7 @@ describe('retry (new api)', function() {
 		let task = () => ++n
 
 		return retry(task, {
-			filter: (err, ret) => ret < 3,	//retry when resolved ret is less than 3
+			filter: (err, ret) => console.log(err) || ret < 3,	//retry when resolved ret is less than 3
 			retry: 5,
 			intervalMs: 1
 		}).then(ret => assert(ret === 3))
@@ -78,7 +78,7 @@ describe('retry (new api)', function() {
 		let task = () => ++n
 
 		return retry(task, {
-			filter: (err, ret) => ret < 3,	//retry when resolved value < 3
+			filter: (err, ret) => console.log(err) || ret < 3,	//retry when resolved value < 3
 			retry: 5,
 			intervalMs: 1
 		}).then(() => assert(n === 3))
@@ -100,7 +100,7 @@ describe('retry (new api)', function() {
 		let task = () => ++n
 
 		return retry(task, {
-			filter: (err, ret) => true,	//retry regardless of err/ret, a dead loop
+			filter: (err, _ret) => console.log(err) || true,	//retry regardless of err/ret, a dead loop
 			retry: 1,			//max retry attempt
 			intervalMs: 1,
 		})
@@ -135,7 +135,7 @@ describe('retry - (legacy api)', function() {
 		}
 
 		return retry(task, {
-			filterReject: e => true,	//retry with any error
+			filterReject: e => console.log(e) || true,	//retry with any error
 			retry: 5,			//max retry attempt
 			intervalMs: 1,		//wait before retry
 			timeoutMs: 0,		//total timeout limit. 0 indicates no total timeout

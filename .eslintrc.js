@@ -112,7 +112,7 @@ module.exports = {
 		'one-var-declaration-per-line': ['error', 'initializations'],
 		'operator-assignment': 'error',
 		'operator-linebreak': ['error', 'before'],
-		'padded-blocks': ['warn', { 'classes': 'never', 'switches': 'never' }],
+		'padded-blocks': ['warn', { classes: 'never', switches: 'never' }],
 		'prefer-object-spread': 'warn',
 		'quotes': ['error', 'single'],
 		'quote-props': ['error', 'consistent-as-needed'],

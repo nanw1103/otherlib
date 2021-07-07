@@ -45,7 +45,6 @@ describe('deepEqual', function() {
 	it('types', function() {
 
 		let f1 = ()=>{}
-		let f2 = ()=>{}
 
 		let t1 = {
 			a: 2,

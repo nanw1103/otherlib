@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { deepEqual, deepGet } = require('../index.js')
+const { deepGet } = require('../index.js')
 require('./helper.js')
 
 describe('deepGet', function() {

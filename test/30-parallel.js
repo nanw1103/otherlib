@@ -1,4 +1,3 @@
-const assert = require('assert')
 const parallel = require('../parallel.js')
 const delay = require('../index.js').delay
 require('./helper.js')
@@ -20,7 +19,7 @@ async function ut() {
 	if (cost > 200)
 		throw 'UT failed: invalid time cost'
 
-	async function delayProcess(n, w) {
+	async function delayProcess(n, _w) {
 		sum += n
 		await delay(100)
 	}
